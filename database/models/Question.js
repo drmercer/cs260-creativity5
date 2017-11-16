@@ -1,7 +1,7 @@
 const mongoose = require('../db');
 
 var questionSchema = new mongoose.Schema({
-  text: String,
+  title: String,
   posterName: {type: String, default:'Billy Joe'},
 	upvotes: {type: Number, default: 0},
 });
