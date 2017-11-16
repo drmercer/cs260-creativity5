@@ -16,7 +16,7 @@ router.post('/question', function(req, res, next) {
   var question = new Question(req.body);
   question.save(function(err) {
     if (err) return next(err);
-    res.sendStatus(200);
+    res.json(question);
   });
 });
 
