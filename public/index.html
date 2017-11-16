@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Questions</title>
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
+  <script src="javascripts/app.js"></script>
+
+</head>
+<body ng-app="questionApp" ng-controller="MainCtrl">
+<div class="row">
+<div class="col-md-6 col-md-offset-3">
+<div class="page-header">
+  <h1>Questions </h1>
+</div>
+
+<form ng-submit="addQuestion()" style = "margin-top30px;">
+    <input type="text" ng-model="questionFormContent"></input>
+    <button type="submit">Add Question</button>
+  </form>
+
+<div ng-repeat="question in questions">
+  <h2>{{question.title}}</h2>
+  <div ng-repeat="comment in question.comments | orderBy: '-upvotes'">
+    <span class="glyphicon glyphicon-thumbs-up" ng-click="incrementUpvotes(comment)"></span>
+    {{comment.text}} - upvotes: {{comment.upvotes}}
+  </div>
+  <form ng-submit="addComment(question)" style = "margin-top30px;">
+    <input type="text" ng-model="question.commentFormContent"></input>
+    <button type="submit">Comment</button>
+  </form>
+</div>
+
+</div>
+</div>
+</body>
+</html>
