@@ -13,8 +13,8 @@ angular.module('questionApp', [])
     }
 
     $scope.addComment = function(question) {
-      question.comments.push({title:question.commentFormContent,upvotes:0});
-      question.formContent='';
+      question.comments.push({text:question.commentFormContent,upvotes:0});
+      question.commentFormContent='';
     };
 
     $scope.incrementUpvotes = function(comment) {
