@@ -18,4 +18,9 @@ mongoose.connection.on('error', function(err) {
 	console.error("Database error:", err);
 });
 
+// Log when connection is established
+mongoose.connection.then(function() {
+  console.log("Connected successfully!");
+});
+
 module.exports = mongoose;
