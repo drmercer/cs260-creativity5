@@ -20,6 +20,13 @@ router.post('/question', function(req, res, next) {
   });
 });
 
+router.put('/question/:question/upvote', function(req, res, next) {
+  req.question.upvote(function(err) {
+    if (err) return next(err);
+    res.json(req.question);
+  });
+})
+
 router.get('/question/:questionId/answers', function(req, res, next) {
   Answer.find({questionId: req.params.questionId}, function(err, answers) {
     if (err) return next(err);
@@ -36,13 +43,31 @@ router.post('/question/:questionId/answer', function(req, res, next) {
   });
 });
 
-// Helper
+router.put('/answer/:answer/upvote', function(req, res, next) {
+  req.answer.upvote(function(err) {
+    if (err) return next(err);
+    res.json(req.answer);
+  });
+})
+
+// Helpers
+
 router.param('question', function(req, res, next, questionId) {
   var query = Question.findById(questionId);
   query.exec(function(err, q) {
     if (err) return next(err);
     if (!q) return next(new Error("Can't find question with ID " + questionId));
     req.question = q;
+    next();
+  });
+});
+
+router.param('answer', function(req, res, next, answerId) {
+  var query = Answer.findById(answerId);
+  query.exec(function(err, obj) {
+    if (err) return next(err);
+    if (!obj) return next(new Error("Can't find answer with ID " + answerId));
+    req.answer = obj;
     next();
   });
 });
