@@ -8,7 +8,7 @@ angular.module('questionApp', [])
     ];
 
     $scope.addQuestion = function() {
-      questions.push({title:$scope.questionFormContent,comments:[]})
+      $scope.questions.push({title:$scope.questionFormContent,comments:[]})
       $scope.questionFormContent='';
     }
 
