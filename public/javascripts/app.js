@@ -3,8 +3,6 @@ angular.module('questionApp', [])
   '$scope', '$http',
   function($scope,$http){
     $scope.questions = [
-      {title:"Question1",comments:[{text:"this question is the best", upvotes:0}, {text:"the answer is yes", upvotes:0}]},
-      {title:"Question2",comments:[{text:"the answer is no",upvotes:0}, {text:"boo",upvotes:0}, {text:"go BYU!!!! 8)",upvotes:0}]}
     ];
 
     $scope.addQuestion = function() {
