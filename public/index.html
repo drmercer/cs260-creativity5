@@ -28,7 +28,7 @@
     <span class="glyphicon glyphicon-thumbs-up" ng-click="incrementUpvotes(comment)"></span>
     {{comment.text}} - upvotes: {{comment.upvotes}}
   </div>
-  <form ng-if="question.comments" ng-submit="addComment(question)" style = "margin-top30px;">
+  <form ng-if="question.comments !== undefined" ng-submit="addComment(question)" style = "margin-top30px;">
     <input type="text" ng-model="question.commentFormContent"></input>
     <button type="submit">Comment</button>
   </form>
