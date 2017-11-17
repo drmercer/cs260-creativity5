@@ -18,6 +18,7 @@ button {
   border-radius: 6px;
   padding: 7px;
   transition: background-color 350ms ease;
+  outline: none;
 }
 
 button:hover {
