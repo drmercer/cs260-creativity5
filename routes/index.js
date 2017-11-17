@@ -8,7 +8,6 @@ var Answer = require('../database/models/Answer');
 router.get('/questions', function(req, res, next) {
   Question.find(function(err, questions) {
     if (err) return next(err);
-    questions.forEach(q => q.comments = []);
     res.json(questions);
   });
 });
@@ -40,7 +39,7 @@ router.post('/question/:questionId/answer', function(req, res, next) {
   ans.questionId = req.params.questionId;
   ans.save(function(err) {
     if (err) return next(err);
-    res.sendStatus(200);
+    res.json(ans);
   });
 });
 

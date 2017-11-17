@@ -17,7 +17,6 @@ angular.module('questionApp', [])
 
     $scope.addComment = function(question) {
       return $http.post('/question/'+question._id+"/answer", {text:question.commentFormContent}).success(function(data) {
-        if (!question.comments) {question.comments = []};
         question.comments.push(data);
         question.commentFormContent='';
       });
