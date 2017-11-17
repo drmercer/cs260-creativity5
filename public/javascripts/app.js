@@ -6,8 +6,9 @@ angular.module('questionApp', [])
     ];
 
     $scope.addQuestion = function() {
-      if (!question.commentFormContent) {return};
-      return $http.post('/question', {title:$scope.questionFormContent}).success(function(data) {
+      const text = $scope.questionFormContent;
+      if (!text) return;
+      return $http.post('/question', {title:text}).success(function(data) {
         console.log(data);
         $scope.questions.push(data);
         $scope.questionFormContent='';
