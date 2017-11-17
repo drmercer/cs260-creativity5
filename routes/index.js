@@ -50,6 +50,11 @@ router.put('/answer/:answer/upvote', function(req, res, next) {
   });
 })
 
+router.delete('/everything', function(req, res, next) {
+  Promise.resolve(Question.remove({}), Answer.remove({}))
+  .then(() => res.sendStatus(200));
+});
+
 // Helpers
 
 router.param('question', function(req, res, next, questionId) {
