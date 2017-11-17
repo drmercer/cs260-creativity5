@@ -8,6 +8,7 @@ var Answer = require('../database/models/Answer');
 router.get('/questions', function(req, res, next) {
   Question.find(function(err, questions) {
     if (err) return next(err);
+    questions.forEach(q => q.comments = []);
     res.json(questions);
   });
 });
