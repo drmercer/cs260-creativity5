@@ -18,7 +18,7 @@
     <button class="submit" type="submit">Add Question</button>
   </form>
 
-<div class="question" ng-repeat="question in questions">
+<div class="question" ng-repeat="question in questions | orderBy: 'title'">
   <h2>{{question.title}}</h2>
 
   <button class="showComments" ng-if="!question.comments" ng-click="getComments(question)">Show Comments</button>
