@@ -8,25 +8,37 @@ angular.module('questionApp', [])
     ];
 
     $scope.addQuestion = function() {
-      $scope.questions.push({title:$scope.questionFormContent,comments:[]})
-      $scope.questionFormContent='';
+      return $http.post('/question', {title:$scope.questionFormContent}).success(function(data) {
+        console.log(data);
+        $scope.questions.push(data);
+        $scope.questionFormContent='';
+      });
     }
 
     $scope.addComment = function(question) {
-      question.comments.push({text:question.commentFormContent,upvotes:0});
-      question.commentFormContent='';
+      return $http.post('/question/'+question._id+"/answer", {text:question.commentFormContent}).success(function(data) {
+        if (!question.comments) {question.comments = []};
+        question.comments.push(data);
+        question.commentFormContent='';
+      });
     };
 
     $scope.incrementUpvotes = function(comment) {
       comment.upvotes += 1;
     };
 
-/*    $scope.getAll = function() {
-      return $http.get('/comments').success(function(data){
-        angular.copy(data, $scope.comments);
+    $scope.getAll = function() {
+      return $http.get('/questions').success(function(data){
+        angular.copy(data, $scope.questions);
       });
-    };*/
+    };
 
-    //$scope.getAll();
+    $scope.getComments = function(question) {
+      return $http.get('/question/'+question._id+'/answers').success(function(data) {
+        question.comments = data;
+      });
+    }
+
+    $scope.getAll();
   }
 ]);

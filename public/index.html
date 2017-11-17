@@ -21,6 +21,9 @@
 
 <div ng-repeat="question in questions">
   <h2>{{question.title}}</h2>
+
+  <button ng-if="!question.comments" ng-click="getComments(question)">Show Comments</button>
+
   <div ng-repeat="comment in question.comments | orderBy: '-upvotes'">
     <span class="glyphicon glyphicon-thumbs-up" ng-click="incrementUpvotes(comment)"></span>
     {{comment.text}} - upvotes: {{comment.upvotes}}
