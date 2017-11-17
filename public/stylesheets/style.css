@@ -33,6 +33,19 @@ input {
 //      Shtuff
 */
 
+body {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+}
+
+.main {
+  background-color: rgba(255, 255, 255, .2);
+  padding: 20px;
+  width: 700px;
+}
+
 .upvote {
   cursor: pointer;
 }
