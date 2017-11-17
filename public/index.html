@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>Questions</title>
-  <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+  <!--link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet"-->
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
   <script src="javascripts/app.js"></script>
 
@@ -25,7 +25,7 @@
   <button ng-if="!question.comments" ng-click="getComments(question)">Show Comments</button>
 
   <div ng-repeat="comment in question.comments | orderBy: '-upvotes'">
-    <span class="glyphicon glyphicon-thumbs-up" ng-click="incrementUpvotes(comment)"></span>
+    <span class="glyphicon glyphicon-thumbs-up" ng-click="incrementUpvotes(comment)">^</span>
     {{comment.text}} - upvotes: {{comment.upvotes}}
   </div>
   <form ng-if="question.comments !== undefined" ng-submit="addComment(question)" style = "margin-top30px;">

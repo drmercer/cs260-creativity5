@@ -23,6 +23,9 @@ angular.module('questionApp', [])
     };
 
     $scope.incrementUpvotes = function(comment) {
+      return $http.put('/answer/'+comment._id+'/upvote/').success(function(data){
+        angular.copy(data, comment);
+      });
       comment.upvotes += 1;
     };
 
