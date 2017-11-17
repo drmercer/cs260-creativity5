@@ -27,10 +27,17 @@
     <span class="upvote glyphicon glyphicon-thumbs-up" ng-click="incrementUpvotes(comment)"></span>
     {{comment.text}} - upvotes: {{comment.upvotes}}
   </div>
+  <div class="noComments" ng-if="question.comments &amp;&amp; !question.comments.length">
+    No comments. Leave one below!
+  </div>
   <form class="newComment" ng-if="question.comments !== undefined" ng-submit="addComment(question)" style = "margin-top30px;">
     <input class="text" type="text" ng-model="question.commentFormContent"></input>
     <button class="submit" type="submit">Comment</button>
   </form>
+</div>
+
+<div ng-if="questions &amp;&amp; !questions.length" class="noQuestions">
+    There are no questions! Add one using the text box above.
 </div>
 
 </div>
