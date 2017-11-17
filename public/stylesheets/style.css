@@ -52,6 +52,17 @@ body {
   width: 700px;
 }
 
+.newQuestion {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: stretch;
+}
+
+.newQuestion .text {
+  min-width: 220px;
+  flex-grow: 1;
+}
+
 .question {
   margin: 8px;
   padding: 10px;
